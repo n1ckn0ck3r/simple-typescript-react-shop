@@ -1,0 +1,55 @@
+$transition: 150ms;
+$padding: 15px;
+
+.header {
+	position: relative;
+	width: 100%;
+	height: 56px;
+	margin: 0;
+	padding: $padding;
+	background-color: black;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: row;
+	align-items: center;
+
+	.title {
+		color: white;
+		font-size: 26px;
+		font-weight: bold;
+		padding: $padding;
+		text-decoration: none;
+		transition: $transition;
+
+		&:hover {
+			color: rgb(242, 231, 136);
+		}
+	}
+
+	.cartLogo {
+		padding: $padding;
+		transition: $transition;
+		background-color: white;
+		border-radius: 100%;
+		height: 48px;
+		width: 48px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		img {
+			height: 32px;
+			width: 32px;
+		}
+
+		&:hover {
+			background-color: black;
+		}
+	}
+
+	@media (max-width: 350px) {
+		.title {
+			font-size: 22px;
+		}
+	}
+}

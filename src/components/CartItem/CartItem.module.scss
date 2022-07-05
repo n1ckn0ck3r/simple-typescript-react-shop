@@ -1,0 +1,162 @@
+.cartItem {
+	position: relative;
+	width: 100%;
+	margin: 5px 0;
+	padding: 5px 10px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-between;
+	background-color: rgba(230, 152, 7, 0.807);
+	border-radius: 10px;
+
+	.image {
+		position: relative;
+		width: 350px;
+		height: 160px;
+		transition: 150ms ease-in;
+
+		img {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 350px;
+			height: 160px;
+			object-fit: cover;
+			border-radius: 10px;
+		}
+
+		@media (max-width: 1350px) {
+			width: 160px;
+
+			img {
+				width: 160px;
+			}
+		}
+	}
+
+	h3 {
+		width: 10%;
+		font-size: 26px;
+		text-align: center;
+	}
+
+	.amount {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-around;
+		align-items: center;
+		gap: 15px;
+		font-size: 22px;
+
+		.increase,
+		.decrease {
+			width: 30px;
+			height: 30px;
+			font-size: 28px;
+			font-weight: 600;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px;
+			outline: none;
+			border: 1px solid black;
+			border-radius: 100%;
+			background: transparent;
+			cursor: pointer;
+			transition: 150ms;
+			color: black;
+		}
+
+		.increase:hover {
+			color: rgba(100, 255, 40, 0.8);
+		}
+
+		.decrease:hover {
+			color: rgba(240, 240, 6, 0.822);
+		}
+
+		.decrease:disabled {
+			cursor: initial;
+
+			&:hover {
+				color: black;
+			}
+		}
+	}
+
+	.price {
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+
+		p {
+			span {
+				font-weight: bold;
+			}
+		}
+	}
+
+	.delete {
+		width: 30px;
+		height: 30px;
+		font-size: 22px;
+		font-weight: 600;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 10px;
+		outline: none;
+		border: 1px solid black;
+		border-radius: 100%;
+		background: transparent;
+		cursor: pointer;
+		transition: 150ms;
+		color: black;
+
+		&:hover {
+			color: rgba(237, 10, 10, 0.875);
+		}
+	}
+
+	@media (max-width: 900px) {
+		.image {
+			display: none;
+		}
+
+		h3 {
+			font-size: 18px;
+		}
+
+		.amount {
+			font-size: 16px;
+			flex-direction: column;
+		}
+
+		.price {
+			font-weight: 16px;
+
+			p {
+				display: none;
+			}
+		}
+	}
+
+	@media (max-width: 500px) {
+		.increase,
+		.decrease,
+		.delete {
+			transform: scale(0.75);
+		}
+	}
+
+	@media (max-width: 400px) {
+		.amount {
+			transform: translateX(50px);
+		}
+	}
+}

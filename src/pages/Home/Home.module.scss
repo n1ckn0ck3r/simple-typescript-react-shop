@@ -1,0 +1,12 @@
+.home {
+	width: 100%;
+	height: auto;
+	margin: 0;
+	padding: 15px 20px;
+	display: flex;
+	flex-direction: row;
+
+	@media (max-width: 720px) {
+		flex-direction: column-reverse;
+	}
+}

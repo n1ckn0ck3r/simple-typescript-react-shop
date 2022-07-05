@@ -1,0 +1,143 @@
+$borderRadius: 10px;
+
+.space {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+}
+
+.card {
+	margin: 10px;
+	padding: 5px 10px;
+	border: 1px solid black;
+	border-radius: $borderRadius;
+	width: 350px;
+	height: 380px;
+	position: relative;
+
+	.logo {
+		width: 330px;
+		height: 160px;
+		margin: 2px 0;
+		border-radius: $borderRadius;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4px;
+
+		img {
+			max-height: 160px;
+			max-width: 320px;
+			border-radius: $borderRadius;
+		}
+	}
+
+	.info {
+		width: 100%;
+		height: calc(380px - 160px - 20px);
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+
+		h1 {
+			font-size: 22px;
+			font-weight: 700;
+			text-align: center;
+		}
+
+		.categories {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			position: relative;
+			text-align: justify;
+			gap: 10px;
+
+			h2 {
+				font-size: 17px;
+				font-weight: 700;
+				text-align: justify;
+			}
+
+			p {
+				font-size: 14px;
+			}
+		}
+
+		.pricing {
+			padding: 4px;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			position: relative;
+
+			button {
+				background: none;
+				outline: none;
+				border: 1px solid black;
+				border-radius: $borderRadius;
+				padding: 10px;
+				font-size: 16px;
+				font-weight: 600;
+				cursor: pointer;
+				transition: 150ms;
+
+				&:hover {
+					background-color: rgba(92, 240, 6, 0.8);
+				}
+			}
+		}
+	}
+
+	@media (max-width: 450px) {
+		margin: 10px 0;
+		width: 240px;
+		height: 270px;
+
+		.logo {
+			width: 220px;
+			height: 70px;
+
+			img {
+				max-width: 210px;
+				max-height: 70px;
+			}
+		}
+
+		.info {
+			height: calc(270px - 70px - 10px);
+
+			h1 {
+				font-size: 18px;
+			}
+
+			.categories {
+				h2 {
+					font-size: 14px;
+				}
+
+				p {
+					font-size: 10px;
+				}
+			}
+		}
+
+		.pricing {
+			p {
+				font-size: 12px;
+			}
+
+			button {
+				font-size: 14px;
+			}
+		}
+	}
+
+	@media (max-width: 300px) {
+		right: 20px;
+	}
+}
