@@ -1,4 +1,4 @@
-$background: rgba(240, 232, 212, 0.8);
+$background: rgba(240, 230, 212, 0.8);
 
 * {
 	padding: 0;
@@ -12,5 +12,14 @@ $background: rgba(240, 232, 212, 0.8);
 	font-weight: 600;
 	width: 100%;
 	min-height: 100vh;
-	background-color: $background;
+	background: $background no-repeat center;
+	background-size: contain;
+
+	.loading {
+		text-align: center;
+		padding: 15px 20px;
+		width: 85%;
+		margin: 5px auto;
+		font-size: 20px;
+	}
 }

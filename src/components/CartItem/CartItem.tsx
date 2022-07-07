@@ -22,6 +22,18 @@ const CartItemComponent: FC<CartItemProps> = ({
 	decrease,
 	deleteItem,
 }) => {
+	const increaseItemAmount = (): void => increase(id);
+
+	const decreaseItemAmount = (): void => decrease(id);
+
+	const removeItem = (): void => {
+		if (
+			window.confirm("Вы действительно хотите удалить этот товар из корзины? ")
+		) {
+			deleteItem(id);
+		}
+	};
+
 	return (
 		<div className={styles.cartItem}>
 			<div className={styles.image}>
@@ -29,15 +41,15 @@ const CartItemComponent: FC<CartItemProps> = ({
 			</div>
 			<h3>{title}</h3>
 			<div className={styles.amount}>
-				<button className={styles.increase} onClick={() => increase(id)}>
-					+
-				</button>
-				<p>{amount}</p>
 				<button
 					className={styles.decrease}
-					onClick={() => decrease(id)}
+					onClick={decreaseItemAmount}
 					disabled={amount === 1}>
 					<p>-</p>
+				</button>
+				<p>{amount}</p>
+				<button className={styles.increase} onClick={increaseItemAmount}>
+					+
 				</button>
 			</div>
 			<div className={styles.price}>
@@ -60,7 +72,7 @@ const CartItemComponent: FC<CartItemProps> = ({
 					</span>
 				</p>
 			</div>
-			<button className={styles.delete} onClick={() => deleteItem(id)}>
+			<button className={styles.delete} onClick={removeItem}>
 				&#10006;
 			</button>
 		</div>

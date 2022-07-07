@@ -1,11 +1,13 @@
-import { useEffect, useRef } from "react";
+import { lazy, Suspense, useEffect, useRef } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import "./App.scss";
 import Header from "./components/Header";
-import Cart from "./pages/Cart";
+// import Cart from "./pages/Cart";
 import Home from "./pages/Home";
 import { selectCartItems } from "./redux/cart/selectors";
 import { useAppSelector } from "./redux/hooks";
+
+const Cart = lazy(() => import("./pages/Cart"));
 
 function App() {
 	const cartItems = useAppSelector(selectCartItems);
@@ -24,7 +26,15 @@ function App() {
 			<Header />
 			<Routes>
 				<Route path="/" element={<Home />} />
-				<Route path="/cart" element={<Cart />} />
+				<Route
+					path="/cart"
+					element={
+						<Suspense
+							fallback={<div className="loading">Идёт загрузка...</div>}>
+							<Cart />
+						</Suspense>
+					}
+				/>
 				<Route path="*" element={<Navigate to="/" />} />
 			</Routes>
 		</div>

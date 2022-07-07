@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchGoods } from "./asyncActions";
-import { GameState, Status } from "./types";
+import { Game, GameState, Status } from "./types";
 
 const initialState: GameState = {
 	games: [],
@@ -11,21 +11,19 @@ export const gamesSlice = createSlice({
 	name: "games",
 	initialState,
 	reducers: {},
-	extraReducers: (builder) => {
-		builder.addCase(fetchGoods.pending, (state): void => {
+	extraReducers: {
+		[fetchGoods.pending.type]: (state) => {
 			state.status = Status.LOADING;
 			state.games = [];
-		});
-
-		builder.addCase(fetchGoods.fulfilled, (state, action): void => {
+		},
+		[fetchGoods.fulfilled.type]: (state, action: PayloadAction<Game[]>) => {
 			state.games = action.payload;
 			state.status = Status.SUCCESS;
-		});
-
-		builder.addCase(fetchGoods.rejected, (state): void => {
+		},
+		[fetchGoods.rejected.type]: (state) => {
 			state.status = Status.ERROR;
 			state.games = [];
-		});
+		},
 	},
 });
 export default gamesSlice.reducer;

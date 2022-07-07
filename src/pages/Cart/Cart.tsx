@@ -36,7 +36,11 @@ const Cart: FC = () => {
 	const deleteItemFromCart = (id: number): PayloadAction<number> =>
 		dispatch(deleteItem(id));
 
-	const clearCart = (): PayloadAction => dispatch(deleteEverything());
+	const clearCart = (): void => {
+		if (window.confirm("Вы действительно хотите очистить корзину?")) {
+			dispatch(deleteEverything());
+		}
+	};
 
 	return (
 		<div className={styles.cart}>

@@ -11,14 +11,14 @@ const GoodsList: FC = () => {
 	const selectedGenres = useAppSelector(selectSelectedGenres);
 	const genreNames = selectedGenres.map((item) => item.name);
 
-	const renderGames = (): Game[] =>
+	const getGamesArray = (): Game[] =>
 		games.filter((game) => genreNames.includes(game.genre));
 
 	if (status === Status.LOADING) {
 		return <div className={styles.loading}>Идёт загрузка...</div>;
 	}
 
-	if (renderGames().length === 0 || status === Status.ERROR) {
+	if (getGamesArray().length === 0 || status === Status.ERROR) {
 		return (
 			<div className={styles.nothing}>
 				<h1>
@@ -32,7 +32,7 @@ const GoodsList: FC = () => {
 	return (
 		<div className={styles.list}>
 			{status === Status.SUCCESS &&
-				renderGames().map((game) => <GoodCard key={game.id} {...game} />)}
+				getGamesArray().map((game) => <GoodCard key={game.id} {...game} />)}
 		</div>
 	);
 };
